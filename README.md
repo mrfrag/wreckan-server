@@ -3,6 +3,11 @@ wreckan-server
 
 Wreckan - Android applications crash reporting system
 
+##Requirements
+
+Wreckan goes great with ACRA - https://github.com/ACRA/acra
+For integration check out wreckan-client for custom ACRA's sender.
+
 App Engine Java Application
 Copyright (C) 2010-2012 Google Inc.
 
