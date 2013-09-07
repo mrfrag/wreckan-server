@@ -20,12 +20,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.datanucleus.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import com.github.wreckan.server.model.AppInfo;
 import com.github.wreckan.server.repository.DataStoreRepository;
 import com.github.wreckan.server.repository.JpaRepository;
-import com.google.appengine.repackaged.org.apache.http.HttpStatus;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -46,7 +45,7 @@ public class ReportServlet extends HttpServlet {
 			try {
 				sendEmails(appInfo, report);
 			} catch (MessagingException e) {
-				setErrorResponse(resp, HttpStatus.SC_INTERNAL_SERVER_ERROR, "Unable to send email: " + e.getMessage());
+				setErrorResponse(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Unable to send email: " + e.getMessage());
 			}
 			if (appInfo.isStoreReports()) {
 				DataStoreRepository.INSTANCE.saveReportData(appInfo, report);
@@ -85,15 +84,15 @@ public class ReportServlet extends HttpServlet {
 	private AppInfo getAppInfo(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String accessKey = req.getParameter("accessKey");
 		if (StringUtils.isEmpty(accessKey)) {
-			setErrorResponse(resp, HttpStatus.SC_BAD_REQUEST, "accessKey is required.");
+			setErrorResponse(resp, HttpServletResponse.SC_BAD_REQUEST, "accessKey is required.");
 			return null;
 		}
 		AppInfo appInfo = JpaRepository.INSTANCE.findAppInfoByAccessKey(accessKey);
 		if (appInfo == null) {
-			setErrorResponse(resp, HttpStatus.SC_BAD_REQUEST, "Wrong accessKey.");
+			setErrorResponse(resp, HttpServletResponse.SC_BAD_REQUEST, "Wrong accessKey.");
 			return null;
 		}
-		resp.setStatus(HttpStatus.SC_OK);
+		resp.setStatus(HttpServletResponse.SC_OK);
 		return appInfo;
 	}
 
