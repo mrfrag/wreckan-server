@@ -100,19 +100,9 @@ public class ReportServlet extends HttpServlet {
 	private void setErrorResponse(HttpServletResponse resp, int statusCode, String message) throws IOException {
 		resp.setStatus(statusCode);
 		resp.setContentType("text/plain");
-		resp.getWriter().println(message);
-	}
-
-	@Override
-	public void init() throws ServletException {
-		super.init();
-		JpaRepository.INSTANCE.onInitContext();
-	}
-
-	@Override
-	public void destroy() {
-		super.destroy();
-		JpaRepository.INSTANCE.onDestroyContext();
+		PrintWriter respWriter = resp.getWriter();
+		respWriter.println(message);
+		respWriter.close();
 	}
 
 }

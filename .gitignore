@@ -8,3 +8,5 @@
 /target
 /.classpath
 /.project
+/.gwt
+/datanucleus.log

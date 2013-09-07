@@ -1,7 +1,8 @@
 package com.github.wreckan.server.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -11,12 +12,10 @@ public enum JpaRepository {
 
 	INSTANCE;
 
-	private EntityManager entityManager;
-
-	private final EntityManagerFactory entityManagerFactory;
+	private final EntityManager entityManager;
 
 	private JpaRepository() {
-		entityManagerFactory = Persistence.createEntityManagerFactory("wreckan-unit");
+		entityManager = Persistence.createEntityManagerFactory("wreckan-unit").createEntityManager();
 	}
 
 	public AppInfo findAppInfoByAccessKey(String accessKey) {
@@ -25,12 +24,21 @@ public enum JpaRepository {
 		return query.getSingleResult();
 	}
 
-	public void onDestroyContext() {
-		entityManager.close();
+	public AppInfo findOne(Long id) {
+		return entityManager.find(AppInfo.class, id);
 	}
 
-	public void onInitContext() {
-		entityManager = entityManagerFactory.createEntityManager();
+	public void save(AppInfo appInfo) {
+		entityManager.persist(appInfo);
+	}
+
+	public void remove(AppInfo appInfo) {
+		entityManager.remove(appInfo);
+	}
+
+	public List<AppInfo> list() {
+		TypedQuery<AppInfo> query = entityManager.createQuery("from AppInfo", AppInfo.class);
+		return query.getResultList();
 	}
 
 }

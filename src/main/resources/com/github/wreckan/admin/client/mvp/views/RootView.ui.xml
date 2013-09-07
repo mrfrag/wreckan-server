@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:gb="urn:import:com.github.gwtbootstrap.client.ui">
+	<ui:with type="com.github.wreckan.admin.client.resources.TextConstants" field="text" />
+	<ui:with type="com.github.wreckan.admin.client.resources.ButtonLabels" field="buttonLabels" />
+	<gb:FluidContainer>
+		<gb:ResponsiveNavbar inverse="true" scrollspy="true" position="TOP">
+			<gb:Brand href="#" text="{text.wreckan}" />
+		</gb:ResponsiveNavbar>
+		<gb:FluidRow height="64px">
+			<gb:Column ui:field="toolBar" offset="2" size="10" />
+		</gb:FluidRow>
+		<gb:FluidRow>
+			<gb:Column size="2" >
+				<gb:Button type="DANGER" text="{buttonLabels.addApplication}" icon="PLUS"/>
+			</gb:Column>
+			<gb:Column ui:field="body" size="10" />
+		</gb:FluidRow>
+	</gb:FluidContainer>
+</ui:UiBinder> 
