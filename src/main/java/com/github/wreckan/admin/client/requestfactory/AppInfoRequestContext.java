@@ -5,6 +5,7 @@ import java.util.List;
 import com.github.wreckan.admin.client.proxy.AppInfoProxy;
 import com.github.wreckan.server.RequestFactoryService;
 import com.github.wreckan.server.RequestFactoryServiceLocator;
+import com.google.web.bindery.requestfactory.shared.InstanceRequest;
 import com.google.web.bindery.requestfactory.shared.Request;
 import com.google.web.bindery.requestfactory.shared.RequestContext;
 import com.google.web.bindery.requestfactory.shared.Service;
@@ -17,5 +18,7 @@ public interface AppInfoRequestContext extends RequestContext {
 	Request<AppInfoProxy> save(AppInfoProxy proxy);
 
 	Request<Void> delete(AppInfoProxy proxy);
+
+//	InstanceRequest<AppInfoProxy, Void> persist();
 
 }

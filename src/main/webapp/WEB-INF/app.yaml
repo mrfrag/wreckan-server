@@ -12,6 +12,10 @@ handlers:
   servlet: com.github.wreckan.server.ReportServlet
   secure: always
   name: report
+- url: /gwtRequest
+  servlet: com.google.web.bindery.requestfactory.server.RequestFactoryServlet
+  secure: always
+  name: gwtRequest
    
 inbound_services:
 - mail

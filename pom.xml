@@ -124,13 +124,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>0.11.8</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
@@ -155,6 +148,26 @@
 			<scope>test</scope>
 			<version>4.11</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.xml.bind</groupId>
+					<artifactId>jaxb-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.validation</groupId>
+					<artifactId>validation-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -175,6 +188,13 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.web.bindery</groupId>
+						<artifactId>requestfactory-apt</artifactId>
+						<version>${gwtVersion}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<plugin>
@@ -211,6 +231,7 @@
 						<configuration>
 							<module>com.github.wreckan.admin.Admin</module>
 							<server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+							<hostedWebapp>${webappDirectory}</hostedWebapp>
 						</configuration>
 						<goals>
 							<goal>compile</goal>

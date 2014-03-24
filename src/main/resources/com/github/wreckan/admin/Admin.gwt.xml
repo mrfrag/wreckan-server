@@ -4,11 +4,12 @@
 
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.web.bindery.requestfactory.RequestFactory" />
-	<inherits name="com.github.gwtbootstrap.Bootstrap"/>
+	<inherits name="com.github.gwtbootstrap.Bootstrap" />
 	<inherits name="com.mvp4g.Mvp4gModule" />
-	
-	<set-property name="bootstrap.responsiveDesign" value="true"/>
+
+	<set-property name="bootstrap.responsiveDesign" value="true" />
 	<entry-point class="com.mvp4g.client.Mvp4gEntryPoint" />
 
 	<source path="client" />
+
 </module>

@@ -1,8 +1,46 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
 	xmlns:gb="urn:import:com.github.gwtbootstrap.client.ui">
-	
-	<gb:DataGrid ui:field="data"/>
-	
+	<ui:with type="com.github.wreckan.admin.client.resources.ButtonLabels" field="buttonLabels" />
+
+	<gb:Form type="HORIZONTAL">
+		<gb:Fieldset>
+			<gb:ControlGroup>
+				<gb:ControlLabel for="app_name">App name</gb:ControlLabel>
+				<gb:Controls>
+					<gb:TextBox alternateSize="XLARGE" gb:id="app_name" ui:field="appName"></gb:TextBox>
+				</gb:Controls>
+			</gb:ControlGroup>
+			<gb:ControlGroup>
+				<gb:ControlLabel for="access_key">Access key</gb:ControlLabel>
+				<gb:Controls>
+					<gb:TextBox alternateSize="XLARGE" gb:id="access_key" ui:field="accessKey"></gb:TextBox>
+				</gb:Controls>
+			</gb:ControlGroup>
+			<gb:ControlGroup>
+				<gb:Controls>
+					<gb:CheckBox gb:id="store_reports" ui:field="storeReports">Store reports</gb:CheckBox>
+				</gb:Controls>
+			</gb:ControlGroup>
+			<gb:ControlGroup>
+				<gb:ControlLabel for="report_recipients">Report recipients</gb:ControlLabel>
+				<gb:Controls>
+					<gb:TextBox alternateSize="XLARGE" gb:id="report_recipients" ui:field="reportRecipients"></gb:TextBox>
+				</gb:Controls>
+			</gb:ControlGroup>
+			<gb:ControlGroup>
+				<gb:ControlLabel for="email_report_fields">Email report fields</gb:ControlLabel>
+				<gb:Controls>
+					<gb:TextBox alternateSize="XLARGE" gb:id="email_report_fields" ui:field="emailReportFields"></gb:TextBox>
+				</gb:Controls>
+			</gb:ControlGroup>
+			<gb:ControlGroup>
+				<gb:Controls>
+					<gb:SubmitButton type="PRIMARY" text="{buttonLabels.addApplication}"  ui:field="addAppButton"/>
+				</gb:Controls>
+			</gb:ControlGroup>
+		</gb:Fieldset>
+	</gb:Form>
+
 </ui:UiBinder> 
